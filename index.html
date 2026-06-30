@@ -6,6 +6,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<style>
+/* Lightweight extra styling for icon usage — does not touch the original theme files */
+.icon-list { list-style: none; padding: 0; margin: 0; }
+.icon-list li { display: flex; align-items: flex-start; gap: 0.6em; margin-bottom: 0.6em; }
+.icon-list li .fa { width: 1.4em; text-align: center; margin-top: 0.2em; flex-shrink: 0; }
+h3 .fa { margin-right: 0.5em; }
+h2.major .fa { margin-right: 0.4em; }
+
+/* Certificate gallery */
+.cert-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 1.25em;
+	margin: 1.5em 0;
+}
+.cert-card {
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.08);
+	border-radius: 6px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.cert-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.25); }
+.cert-card img { display: block; width: 100%; height: 150px; object-fit: cover; object-position: top; }
+.cert-card .cert-label {
+	padding: 0.6em 0.8em;
+	font-size: 0.8em;
+	line-height: 1.3em;
+}
+.cert-card .cert-label strong { display: block; font-size: 0.95em; }
+.cert-card .cert-label span { opacity: 0.65; font-size: 0.85em; }
+
+/* Lightbox */
+#cert-lightbox {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.88);
+	z-index: 9999;
+	align-items: center;
+	justify-content: center;
+	padding: 2em;
+	cursor: zoom-out;
+}
+#cert-lightbox.active { display: flex; }
+#cert-lightbox img { max-width: 90%; max-height: 90%; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+#cert-lightbox .lightbox-caption { position: absolute; bottom: 2em; left: 0; right: 0; text-align: center; color: #fff; font-size: 0.95em; }
+</style>
 </head>
 <body class="is-preload">
 <div id="wrapper">
@@ -17,31 +66,31 @@
 <h1>Aljohara Almusallam</h1>
 <p><strong>Biomedical Engineering | Healthcare Technology</strong><br>
 Biomedical Engineering graduate from King Saud University with a GPA of 4.82/5.00 and professional exposure to healthcare technologies, medical devices, clinical systems, healthcare IT, and digital health solutions.</p>
-<p>GPA 4.82/5.00 • Clinical Internship at KAMC-NGHA • 10+ Certifications • 5 Major Projects • 153+ Volunteer Hours</p>
+<p><span class="fa fa-graduation-cap"></span> GPA 4.82/5.00 &nbsp;•&nbsp; <span class="fa fa-hospital-o"></span> Clinical Internship at KAMC-NGHA &nbsp;•&nbsp; <span class="fa fa-certificate"></span> 10+ Certifications &nbsp;•&nbsp; <span class="fa fa-flask"></span> 5 Major Projects &nbsp;•&nbsp; <span class="fa fa-hand-paper-o"></span> 153+ Volunteer Hours</p>
 </div>
 </div>
 <nav><ul>
-<li><a href="#profile">Profile</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#internship">Internship</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#certifications">Certifications</a></li>
-<li><a href="#leadership">Leadership</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#profile"><span class="fa fa-user"></span> Profile</a></li>
+<li><a href="#education"><span class="fa fa-graduation-cap"></span> Education</a></li>
+<li><a href="#internship"><span class="fa fa-hospital-o"></span> Internship</a></li>
+<li><a href="#projects"><span class="fa fa-flask"></span> Projects</a></li>
+<li><a href="#certifications"><span class="fa fa-certificate"></span> Certifications</a></li>
+<li><a href="#leadership"><span class="fa fa-users"></span> Leadership</a></li>
+<li><a href="#contact"><span class="fa fa-envelope"></span> Contact</a></li>
 </ul></nav>
 </header>
 
 <div id="main">
 
 <article id="profile">
-<h2 class="major">Profile</h2>
+<h2 class="major"><span class="fa fa-user"></span>Profile</h2>
 <p>Biomedical engineering graduate with academic and practical experience in healthcare technology, medical systems, biomedical instrumentation, healthcare information systems, and healthcare innovation.</p>
 <p>Professional experience includes a clinical internship within a tertiary healthcare environment, exposure to medical equipment management, preventive maintenance, healthcare technology systems, and participation in healthcare IT and biomedical engineering projects.</p>
 <p>Areas of involvement span medical devices, digital health solutions, healthcare applications, clinical engineering workflows, and technology-driven solutions supporting modern healthcare environments.</p>
 </article>
 
 <article id="education">
-<h2 class="major">Education</h2>
+<h2 class="major"><span class="fa fa-graduation-cap"></span>Education</h2>
 <p><strong>Bachelor of Biomedical Engineering</strong><br>
 King Saud University (KSU)<br>
 Graduation Year: 2025<br>
@@ -49,122 +98,171 @@ GPA: 4.82 / 5.00</p>
 </article>
 
 <article id="internship">
-<h2 class="major">Clinical Internship</h2>
+<h2 class="major"><span class="fa fa-hospital-o"></span>Clinical Internship</h2>
 <p><strong>King Abdulaziz Medical City – National Guard Health Affairs (2026)</strong></p>
 <p>Comprehensive clinical internship covering biomedical engineering operations, medical equipment management, troubleshooting, testing, maintenance, documentation, and healthcare technology systems.</p>
 
-<h3>Clinical & Technical Areas</h3>
-<ul>
-<li>General Biomedical Workshop</li>
-<li>Cardiac Workshop</li>
-<li>Operating Rooms (OR) & Critical Care Areas</li>
-<li>Laboratory & Dialysis Units</li>
-<li>Imaging Department</li>
-<li>Medical Systems & Integration Department</li>
+<h3><span class="fa fa-building-o"></span>Clinical & Technical Areas</h3>
+<ul class="icon-list">
+<li><span class="fa fa-wrench"></span> General Biomedical Workshop</li>
+<li><span class="fa fa-heartbeat"></span> Cardiac Workshop</li>
+<li><span class="fa fa-medkit"></span> Operating Rooms (OR) & Critical Care Areas</li>
+<li><span class="fa fa-flask"></span> Laboratory & Dialysis Units</li>
+<li><span class="fa fa-picture-o"></span> Imaging Department</li>
+<li><span class="fa fa-sitemap"></span> Medical Systems & Integration Department</li>
 </ul>
 
-<h3>Cardiac & Monitoring Equipment</h3>
-<ul>
-<li>Patient Monitors</li>
-<li>VS4 Monitoring Systems</li>
-<li>Central Monitoring Stations</li>
-<li>Pacemakers</li>
-<li>CardioHelp System</li>
-<li>Intra-Aortic Balloon Pump (IABP)</li>
+<h3><span class="fa fa-heartbeat"></span>Cardiac & Monitoring Equipment</h3>
+<ul class="icon-list">
+<li><span class="fa fa-desktop"></span> Patient Monitors</li>
+<li><span class="fa fa-tachometer"></span> VS4 Monitoring Systems</li>
+<li><span class="fa fa-th-large"></span> Central Monitoring Stations</li>
+<li><span class="fa fa-bolt"></span> Pacemakers</li>
+<li><span class="fa fa-heart"></span> CardioHelp System</li>
+<li><span class="fa fa-circle-o-notch"></span> Intra-Aortic Balloon Pump (IABP)</li>
 </ul>
 
-<h3>Critical Care Equipment</h3>
-<ul>
-<li>Mechanical Ventilators</li>
-<li>High-Frequency Ventilators</li>
-<li>Transport Ventilators</li>
+<h3><span class="fa fa-lungs" aria-hidden="true"></span><span class="fa fa-medkit"></span>Critical Care Equipment</h3>
+<ul class="icon-list">
+<li><span class="fa fa-wind" aria-hidden="true"></span><span class="fa fa-refresh"></span> Mechanical Ventilators</li>
+<li><span class="fa fa-refresh"></span> High-Frequency Ventilators</li>
+<li><span class="fa fa-truck"></span> Transport Ventilators</li>
 </ul>
 
-<h3>Imaging Systems</h3>
-<ul>
-<li>X-Ray Systems</li>
-<li>CT Scanners</li>
-<li>MRI Systems</li>
-<li>Ultrasound Systems</li>
-<li>C-Arm Systems</li>
-<li>PET/CT Systems</li>
+<h3><span class="fa fa-picture-o"></span>Imaging Systems</h3>
+<ul class="icon-list">
+<li><span class="fa fa-bone" aria-hidden="true"></span><span class="fa fa-male"></span> X-Ray Systems</li>
+<li><span class="fa fa-circle-o-notch"></span> CT Scanners</li>
+<li><span class="fa fa-magnet" aria-hidden="true"></span><span class="fa fa-square-o"></span> MRI Systems</li>
+<li><span class="fa fa-soundcloud" aria-hidden="true"></span><span class="fa fa-circle-o"></span> Ultrasound Systems</li>
+<li><span class="fa fa-arrows-h"></span> C-Arm Systems</li>
+<li><span class="fa fa-dot-circle-o"></span> PET/CT Systems</li>
 </ul>
 
-<h3>Laboratory & Dialysis Equipment</h3>
-<ul>
-<li>Dialysis Machines</li>
-<li>CRRT Systems</li>
-<li>Omnicell Systems</li>
-<li>Safety Cabinets</li>
-<li>Centrifuges</li>
+<h3><span class="fa fa-flask"></span>Laboratory & Dialysis Equipment</h3>
+<ul class="icon-list">
+<li><span class="fa fa-tint"></span> Dialysis Machines</li>
+<li><span class="fa fa-filter"></span> CRRT Systems</li>
+<li><span class="fa fa-archive"></span> Omnicell Systems</li>
+<li><span class="fa fa-shield"></span> Safety Cabinets</li>
+<li><span class="fa fa-refresh"></span> Centrifuges</li>
 </ul>
 
-<h3>Specialized Equipment</h3>
-<ul>
-<li>Incubators</li>
-<li>Dental Equipment</li>
-<li>Ophthalmology Systems</li>
-<li>Sleep Lab Systems</li>
-<li>Rehabilitation Treadmills</li>
-<li>Humidifiers</li>
-<li>Home Care Medical Equipment</li>
+<h3><span class="fa fa-plus-square"></span>Specialized Equipment</h3>
+<ul class="icon-list">
+<li><span class="fa fa-child"></span> Incubators</li>
+<li><span class="fa fa-smile-o"></span> Dental Equipment</li>
+<li><span class="fa fa-eye"></span> Ophthalmology Systems</li>
+<li><span class="fa fa-moon-o"></span> Sleep Lab Systems</li>
+<li><span class="fa fa-male"></span> Rehabilitation Treadmills</li>
+<li><span class="fa fa-tint"></span> Humidifiers</li>
+<li><span class="fa fa-home"></span> Home Care Medical Equipment</li>
 </ul>
 </article>
 
 <article id="projects">
-<h2 class="major">Projects</h2>
+<h2 class="major"><span class="fa fa-flask"></span>Projects</h2>
 
-<h3>Home Healthcare Application (Graduation Project)</h3>
+<h3><span class="fa fa-home"></span>Home Healthcare Application (Graduation Project)</h3>
 <p>A capstone project focused on improving access to home healthcare services through a centralized digital platform.</p>
 <p>The application enables patients to connect with healthcare providers, compare service prices, review provider profiles, and receive location-based recommendations. The project supports healthcare accessibility, patient experience improvement, and digital transformation initiatives within the healthcare sector.</p>
 
-<h3>Drug Interaction Detection System</h3>
+<h3><span class="fa fa-medkit"></span>Drug Interaction Detection System</h3>
 <p>Healthcare IT project designed to improve medication safety through automated drug-drug interaction detection. The system identifies potential interactions between previously dispensed medications and newly selected drugs. Future integration with Wasfaty and dosage validation capabilities was considered.</p>
 
-<h3>ECG Measurement System Using Arduino</h3>
+<h3><span class="fa fa-heartbeat"></span>ECG Measurement System Using Arduino</h3>
 <p>Design and implementation of an ECG signal measurement system using Arduino and biomedical sensors for real-time signal acquisition, visualization, and preliminary signal analysis.</p>
 
-<h3>Ambu Bag Design (3D Modeling)</h3>
+<h3><span class="fa fa-cube"></span>Ambu Bag Design (3D Modeling)</h3>
 <p>Development of a 3D model of an Ambu bag with emphasis on ergonomic design, functional enhancement, and improved usability for medical applications.</p>
 
-<h3>Solution for Muscle Weakness in Astronauts</h3>
+<h3><span class="fa fa-rocket"></span>Solution for Muscle Weakness in Astronauts</h3>
 <p>Conceptual solution addressing muscle atrophy in astronauts through wearable technology and rehabilitation-oriented design to preserve muscle strength during and after space missions.</p>
 </article>
 
 <article id="certifications">
-<h2 class="major">Certifications & Professional Training</h2>
-<ul>
-<li>AI Skills 4 Women – Founderz AI & Business School (March 2026)</li>
-<li>Microsoft Azure AI Fundamentals – ELEVATE Women Empowerment / ICAIRE (October 19, 2025)</li>
-<li>Network Programming 101 – Tuwaiq Academy (November 2025)</li>
-<li>Network Programming 102 – Tuwaiq Academy (November 2025)</li>
-<li>Research Bioethics Online Course – NCBE, KACST (March 10, 2025 | Valid Until March 2028)</li>
-<li>Exploring Generative AI: Unleashing the Power of Machine Learning (January 16, 2024)</li>
-<li>Image Processing Onramp – MathWorks (January 23, 2024)</li>
-<li>SFDA Medical Device Regulations Workshop (January 14, 2024)</li>
-<li>Biomedical Engineering Workshop – Anfas Medical Care Hospital (August 14, 2023)</li>
-<li>Introduction to CT-Scan – National University for Science and Technology (July 25, 2023)</li>
-<li>MATLAB Onramp – MathWorks (December 4, 2022)</li>
-</ul>
+<h2 class="major"><span class="fa fa-certificate"></span>Certifications & Professional Training</h2>
+<div class="cert-grid">
+<div class="cert-card" onclick="openCert('assets/certs/ai_skills.png','AI Skills 4 Women – Founderz / Tech Saudi Advocates')">
+<img src="assets/certs/ai_skills.png" alt="AI Skills 4 Women Certificate"><div class="cert-label"><strong>AI Skills 4 Women</strong><span>Founderz AI & Business School — March 2026</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/mckinsey.png','McKinsey Forward Program')">
+<img src="assets/certs/mckinsey.png" alt="McKinsey Forward Certificate"><div class="cert-label"><strong>McKinsey Forward Program</strong><span>McKinsey.org — June 2026</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/fluke.png','Fluke Biomedical Equipment Operational Training')">
+<img src="assets/certs/fluke.png" alt="Fluke Biomedical Training Certificate"><div class="cert-label"><strong>Fluke Biomedical Equipment Operational Training</strong><span>Aljeel Medical — 2026</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/azure_ai.png','Microsoft Azure AI Fundamentals')">
+<img src="assets/certs/azure_ai.png" alt="Microsoft Azure AI Fundamentals Certificate"><div class="cert-label"><strong>Microsoft Azure AI Fundamentals</strong><span>ELEVATE / ICAIRE — October 19, 2025</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/network102.png','Network Programming 102')">
+<img src="assets/certs/network102.png" alt="Network Programming 102 Certificate"><div class="cert-label"><strong>Network Programming 102</strong><span>Tuwaiq Academy — November 2025</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/network101.png','Network Programming 101')">
+<img src="assets/certs/network101.png" alt="Network Programming 101 Certificate"><div class="cert-label"><strong>Network Programming 101</strong><span>Tuwaiq Academy — November 2025</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/security101.png','Network Security 101')">
+<img src="assets/certs/security101.png" alt="Network Security 101 Certificate"><div class="cert-label"><strong>Network Security 101</strong><span>Tuwaiq Academy — November 2025</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/bioethics.png','Research Bioethics Online Course')">
+<img src="assets/certs/bioethics.png" alt="Research Bioethics Certificate"><div class="cert-label"><strong>Research Bioethics Online Course</strong><span>NCBE, KACST — March 10, 2025 | Valid Until March 2028</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/genai_lecture.png','Exploring Generative AI Lecture')">
+<img src="assets/certs/genai_lecture.png" alt="Generative AI Lecture Certificate"><div class="cert-label"><strong>Exploring Generative AI: Unleashing the Power of Machine Learning</strong><span>January 16, 2024</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/imgproc.png','Image Processing Onramp')">
+<img src="assets/certs/imgproc.png" alt="Image Processing Onramp Certificate"><div class="cert-label"><strong>Image Processing Onramp</strong><span>MathWorks — January 23, 2024</span></div>
+</div>
+<div class="cert-card" style="cursor:default;">
+<div class="cert-label" style="padding:1.5em 0.8em;"><strong><span class="fa fa-gavel"></span> SFDA Medical Device Regulations Workshop</strong><span>January 14, 2024</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/anfas_workshop.png','Biomedical Engineering Workshop – Anfas Medical Care Hospital')">
+<img src="assets/certs/anfas_workshop.png" alt="Anfas Workshop Certificate"><div class="cert-label"><strong>Biomedical Engineering Workshop</strong><span>Anfas Medical Care Hospital — August 14, 2023</span></div>
+</div>
+<div class="cert-card" style="cursor:default;">
+<div class="cert-label" style="padding:1.5em 0.8em;"><strong><span class="fa fa-circle-o-notch"></span> Introduction to CT-Scan</strong><span>National University for Science and Technology — July 25, 2023</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/matlab.png','MATLAB Onramp')">
+<img src="assets/certs/matlab.png" alt="MATLAB Onramp Certificate"><div class="cert-label"><strong>MATLAB Onramp</strong><span>MathWorks — December 4, 2022</span></div>
+</div>
+</div>
 </article>
 
 <article id="leadership">
-<h2 class="major">Leadership & Volunteering</h2>
-<ul>
-<li>Event Organizer – Saudi Society for Health Promotion & Education (25 Volunteer Hours)</li>
-<li>Technical Committee Member – Biomedical Technology Club (33 Volunteer Hours)</li>
-<li>Design & Coordination Committee Member – Biomedical Technology Club (5 Volunteer Hours)</li>
-<li>Quality & Development Committee Member – King Saud University (72 Volunteer Hours)</li>
-<li>Human Resources Team Member – King Saud University (8 Volunteer Hours)</li>
-<li>Student Activities Volunteer – King Saud University (10 Volunteer Hours)</li>
-</ul>
-<p><strong>Total Volunteer Hours: 153+</strong></p>
+<h2 class="major"><span class="fa fa-users"></span>Leadership & Volunteering</h2>
+<div class="cert-grid">
+<div class="cert-card" onclick="openCert('assets/certs/quality_72h.png','Quality & Development Committee Member – 72 Volunteer Hours')">
+<img src="assets/certs/quality_72h.png" alt="Quality Committee Certificate"><div class="cert-label"><strong>Quality & Development Committee Member</strong><span>King Saud University — 72 Volunteer Hours</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/darb_initiative.png','Technical Committee Member – Darb Initiative – 33 Volunteer Hours')">
+<img src="assets/certs/darb_initiative.png" alt="Darb Initiative Certificate"><div class="cert-label"><strong>Technical Committee Member – Biomedical Technology Club</strong><span>Darb Initiative — 33 Volunteer Hours</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/technical_27h.png','Biomedical Technology Club – 27 Volunteer Hours')">
+<img src="assets/certs/technical_27h.png" alt="Technical Committee 27h Certificate"><div class="cert-label"><strong>Active Participation – Biomedical Technology Club</strong><span>27 Volunteer Hours</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/design_committee.png','Design & Coordination Committee Member – 5 Volunteer Hours')">
+<img src="assets/certs/design_committee.png" alt="Design Committee Certificate"><div class="cert-label"><strong>Design & Coordination Committee Member</strong><span>Biomedical Technology Club — 5 Volunteer Hours</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/hackathon.png','Hackathon Initiative Member – 8 Volunteer Hours')">
+<img src="assets/certs/hackathon.png" alt="Hackathon Certificate"><div class="cert-label"><strong>Hackathon Initiative Member</strong><span>Biomedical Technology Club — 8 Volunteer Hours</span></div>
+</div>
+<div class="cert-card" style="cursor:default;">
+<div class="cert-label" style="padding:1.5em 0.8em;"><strong><span class="fa fa-id-badge"></span> Human Resources Team Member</strong><span>King Saud University — 8 Volunteer Hours</span></div>
+</div>
+<div class="cert-card" onclick="openCert('assets/certs/student_activities_10h.png','Student Activities Unit Volunteer – 10 Volunteer Hours')">
+<img src="assets/certs/student_activities_10h.png" alt="Student Activities Certificate"><div class="cert-label"><strong>Student Activities Unit Volunteer</strong><span>King Saud University — 10 Volunteer Hours</span></div>
+</div>
+<div class="cert-card" style="cursor:default;">
+<div class="cert-label" style="padding:1.5em 0.8em;"><strong><span class="fa fa-calendar-check-o"></span> Event Organizer</strong><span>Saudi Society for Health Promotion & Education — 25 Volunteer Hours</span></div>
+</div>
+</div>
+<p><strong><span class="fa fa-clock-o"></span> Total Volunteer Hours: 153+</strong></p>
 </article>
 
 <article id="contact">
-<h2 class="major">Contact</h2>
-<p>Email: aljohara.almusallam1@gmail.com</p>
-<p>LinkedIn: https://www.linkedin.com/in/aljohara-almusallam-491b66304</p>
+<h2 class="major"><span class="fa fa-envelope"></span>Contact</h2>
+<p><span class="fa fa-envelope-o"></span> Email: aljohara.almusallam1@gmail.com</p>
+<p><span class="fa fa-linkedin-square"></span> LinkedIn: <a href="https://www.linkedin.com/in/aljohara-almusallam-491b66304">https://www.linkedin.com/in/aljohara-almusallam-491b66304</a></p>
 </article>
 
 </div>
@@ -172,9 +270,24 @@ GPA: 4.82 / 5.00</p>
 <footer id="footer"><p class="copyright">&copy; 2026 Aljohara Almusallam</p></footer>
 </div>
 <div id="bg"></div>
+<div id="cert-lightbox" onclick="closeCert()">
+<img id="cert-lightbox-img" src="" alt="">
+<div class="lightbox-caption" id="cert-lightbox-caption"></div>
+</div>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+function openCert(src, caption) {
+	document.getElementById('cert-lightbox-img').src = src;
+	document.getElementById('cert-lightbox-caption').textContent = caption;
+	document.getElementById('cert-lightbox').classList.add('active');
+}
+function closeCert() {
+	document.getElementById('cert-lightbox').classList.remove('active');
+}
+</script>
 </body></html>
